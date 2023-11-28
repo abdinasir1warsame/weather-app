@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">Weather Dashboard</h1>
+        <div class="search-area">
+          <input
+            type="text"
+            id="search-box"
+            placeholder="Search City..."
+            autofocus
+          />
+          <button id="search-button">Search</button>
+          <button id="location-button" title="Use Current Location">
+            <img src="location-icon.png" alt="Locate Me" />
+          </button>
+        </div>
+      </div>
+      <div class="current-location-weather">
+        <p>Current Location: <span id="currentLocation">New York</span></p>
+        <p>Temperature: <span id="currentTemp">75°F</span></p>
+      </div>
+    </header>
     <script src="./index.js"></script>
   </body>
 </html>
