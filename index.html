@@ -28,6 +28,93 @@
         <p>Temperature: <span id="currentTemp">75°F</span></p>
       </div>
     </header>
+    <main class="weather-content">
+      <aside class="sidebar">
+        <div class="search-history">
+          <h2>United Kingdom Weather Conditions</h2>
+          <ul id="searchHistoryList">
+            <li>London <span class="live-temp">75°F</span></li>
+            <li>Birmingham<span class="live-temp">65°F</span></li>
+            <li>Manchester <span class="live-temp">70°F</span></li>
+            <li>Liverpool <span class="live-temp">82°F</span></li>
+            <li>Leeds <span class="live-temp">82°F</span></li>
+            <li>Sheffield <span class="live-temp">82°F</span></li>
+            <li>Liverpool <span class="live-temp">82°F</span></li>
+          </ul>
+        </div>
+        <div class="favorites">
+          <h2>Search History</h2>
+          <ul id="favoritesList">
+            <li>Los Angeles <span class="live-temp">80°F</span></li>
+            <li>Paris <span class="live-temp">68°F</span></li>
+            <li>Rio de Janeiro <span class="live-temp">85°F</span></li>
+            <li>Cape Town <span class="live-temp">72°F</span></li>
+          </ul>
+        </div>
+      </aside>
+
+      <section class="main-info">
+        <div class="current-weather">
+          <h3>Current Weather: London</h3>
+          <p><strong>Temperature:</strong> 75°F</p>
+          <p><strong>Humidity:</strong> 60%</p>
+          <p><strong>Wind:</strong> 5 mph ENE</p>
+          <p><strong>Conditions:</strong> Partly Cloudy</p>
+        </div>
+        <div class="hourly-forecast">
+          <h3>Hourly Forecast</h3>
+          <div class="forecast-hour">
+            <p><strong>09:00 AM</strong></p>
+            <p>76°F, Mostly Sunny</p>
+          </div>
+          <div class="forecast-hour">
+            <p><strong>10:00 AM</strong></p>
+            <p>77°F, Sunny</p>
+          </div>
+          <div class="forecast-hour">
+            <p><strong>11:00 AM</strong></p>
+            <p>76°F, Mostly Sunny</p>
+          </div>
+          <div class="forecast-hour">
+            <p><strong>12:00 AM</strong></p>
+            <p>77°F, Sunny</p>
+          </div>
+          <div class="forecast-hour">
+            <p><strong>13:00 AM</strong></p>
+            <p>76°F, Mostly Sunny</p>
+          </div>
+          <div class="forecast-hour">
+            <p><strong>14:00 AM</strong></p>
+            <p>77°F, Sunny</p>
+          </div>
+        </div>
+        <div class="detailed-stats">
+          <h3>Detailed Statistics</h3>
+          <div class="stats-row">
+            <div class="stat">
+              <span class="stat-title">UV Index</span>
+              <span class="stat-value">5 Moderate</span>
+            </div>
+            <div class="stat">
+              <span class="stat-title">Visibility</span>
+              <span class="stat-value">10 km</span>
+            </div>
+            <div class="stat">
+              <span class="stat-title">Humidity </span>
+              <span class="stat-value">80%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-title">wind-speed</span>
+              <span class="stat-value">30mph</span>
+            </div>
+          </div>
+        </div>
+        <div class="weather-map">
+          <h3>Weather Map</h3>
+          <p>Interactive Map Placeholder</p>
+        </div>
+      </section>
+    </main>
     <script src="./index.js"></script>
   </body>
 </html>
