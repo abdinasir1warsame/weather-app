@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
+    <!-- header section -->
     <header class="app-header">
       <div class="header-content">
         <h1 class="app-title">Weather Dashboard</h1>
@@ -28,7 +32,9 @@
         <p>Temperature: <span id="currentTemp">75°F</span></p>
       </div>
     </header>
-    <main class="weather-content">
+    <!-- main section -->
+    <div class="main">
+      <!-- side bar with top weathers and favourite weathers -->
       <aside class="sidebar">
         <div class="search-history">
           <h2>United Kingdom Weather Conditions</h2>
@@ -52,69 +58,80 @@
           </ul>
         </div>
       </aside>
-
-      <section class="main-info">
+      <!-- current weather section for chosen city -->
+      <div class="weather-section">
         <div class="current-weather">
-          <h3>Current Weather: London</h3>
-          <p><strong>Temperature:</strong> 75°F</p>
-          <p><strong>Humidity:</strong> 60%</p>
-          <p><strong>Wind:</strong> 5 mph ENE</p>
-          <p><strong>Conditions:</strong> Partly Cloudy</p>
-        </div>
-        <div class="hourly-forecast">
-          <h3>Hourly Forecast</h3>
-          <div class="forecast-hour">
-            <p><strong>09:00 AM</strong></p>
-            <p>76°F, Mostly Sunny</p>
-          </div>
-          <div class="forecast-hour">
-            <p><strong>10:00 AM</strong></p>
-            <p>77°F, Sunny</p>
-          </div>
-          <div class="forecast-hour">
-            <p><strong>11:00 AM</strong></p>
-            <p>76°F, Mostly Sunny</p>
-          </div>
-          <div class="forecast-hour">
-            <p><strong>12:00 AM</strong></p>
-            <p>77°F, Sunny</p>
-          </div>
-          <div class="forecast-hour">
-            <p><strong>13:00 AM</strong></p>
-            <p>76°F, Mostly Sunny</p>
-          </div>
-          <div class="forecast-hour">
-            <p><strong>14:00 AM</strong></p>
-            <p>77°F, Sunny</p>
-          </div>
-        </div>
-        <div class="detailed-stats">
-          <h3>Detailed Statistics</h3>
-          <div class="stats-row">
-            <div class="stat">
-              <span class="stat-title">UV Index</span>
-              <span class="stat-value">5 Moderate</span>
+          <h2 class="current-weather__city">Islamabad, Pakistan</h2>
+          <i class="wi wi-day-sunny current-weather__icon"></i>
+          <div class="current-weather__temp">36.9°</div>
+          <div class="current-weather__condition">Sunny</div>
+          <!-- detailed weather stats for current weather -->
+          <h2 class="weather-stats-title">Detailed Statistics</h2>
+          <div class="weather-stats">
+            <div class="weather-stats__item">
+              <i class="wi wi-hot weather-stats__icon"></i>
+              <h3 class="weather-stats__title">UV Index</h3>
+              <p class="weather-stats__value">5 Moderate</p>
             </div>
-            <div class="stat">
-              <span class="stat-title">Visibility</span>
-              <span class="stat-value">10 km</span>
+            <div class="weather-stats__item">
+              <i class="wi wi-fog weather-stats__icon"></i>
+              <h3 class="weather-stats__title">Visibility</h3>
+              <p class="weather-stats__value">10 km</p>
             </div>
-            <div class="stat">
-              <span class="stat-title">Humidity </span>
-              <span class="stat-value">80%</span>
+            <div class="weather-stats__item">
+              <i class="wi wi-humidity weather-stats__icon"></i>
+              <h3 class="weather-stats__title">Humidity</h3>
+              <p class="weather-stats__value">65%</p>
             </div>
-            <div class="stat">
-              <span class="stat-title">wind-speed</span>
-              <span class="stat-value">30mph</span>
+            <div class="weather-stats__item">
+              <i class="wi wi-strong-wind weather-stats__icon"></i>
+              <h3 class="weather-stats__title">Wind Speed</h3>
+              <p class="weather-stats__value">13 km/h</p>
             </div>
           </div>
         </div>
-        <div class="weather-map">
-          <h3>Weather Map</h3>
-          <p>Interactive Map Placeholder</p>
+        <!-- daily forecast -->
+        <h2 class="weather-forecast-title">Daily Forecast</h2>
+        <div class="weather-forecast-wrapper">
+          <div class="weather-forecast">
+            <div class="weather-forecast__day">
+              <div class="weather-forecast__date">Fri</div>
+              <i class="wi wi-day-sunny weather-forecast__icon"></i>
+              <div class="weather-forecast__temp">30.3°</div>
+            </div>
+            <div class="weather-forecast__day">
+              <div class="weather-forecast__date">Sat</div>
+              <i class="wi wi-cloudy weather-forecast__icon"></i>
+              <div class="weather-forecast__temp">28.1°</div>
+            </div>
+            <div class="weather-forecast__day">
+              <div class="weather-forecast__date">Sun</div>
+              <i class="wi wi-rain weather-forecast__icon"></i>
+              <div class="weather-forecast__temp">25.7°</div>
+            </div>
+            <div class="weather-forecast__day">
+              <div class="weather-forecast__date">Mon</div>
+              <i class="wi wi-thunderstorm weather-forecast__icon"></i>
+              <div class="weather-forecast__temp">26.4°</div>
+            </div>
+            <div class="weather-forecast__day">
+              <div class="weather-forecast__date">Tue</div>
+              <i class="wi wi-showers weather-forecast__icon"></i>
+              <div class="weather-forecast__temp">27.3°</div>
+            </div>
+            <div class="weather-forecast__day">
+              <div class="weather-forecast__date">Wed</div>
+              <i class="wi wi-day-sleet weather-forecast__icon"></i>
+              <div class="weather-forecast__temp">24.6°</div>
+            </div>
+            <div class="weather-forecast__day">
+              <div class="weather-forecast__date">Thu</div>
+              <i class="wi wi-fog weather-forecast__icon"></i>
+              <div class="weather-forecast__temp">23.9°</div>
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
-    <script src="./index.js"></script>
+      </div>
+    </div>
   </body>
 </html>
