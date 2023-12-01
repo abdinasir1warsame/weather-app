@@ -19,8 +19,16 @@
       <div class="header-content">
         <h1 class="app-title">Weather Dashboard</h1>
         <div class="search-box">
-          <input type="text" class="search-input" placeholder="Search..." />
-          <button class="search-button">
+          <input
+            id="search-input"
+            class="search-input"
+            placeholder="Search..."
+          />
+          <button
+            id="weather-search-submit"
+            type="submit"
+            class="search-button"
+          >
             <i class="fas fa-search"></i>
           </button>
         </div>
@@ -57,40 +65,10 @@
         </div>
       </aside>
       <!-- current weather section for chosen city -->
-      <div class="weather-section">
-        <div class="current-weather">
-          <h2 class="current-weather__city">Islamabad, Pakistan</h2>
-          <i class="wi wi-day-sunny current-weather__icon"></i>
-          <div class="current-weather__temp">36.9°</div>
-          <div class="current-weather__condition">Sunny</div>
-          <!-- detailed weather stats for current weather -->
-          <h2 class="weather-stats-title">Detailed Statistics</h2>
-          <div class="weather-stats">
-            <div class="weather-stats__item">
-              <i class="wi wi-hot weather-stats__icon"></i>
-              <h3 class="weather-stats__title">UV Index</h3>
-              <p class="weather-stats__value">5 Moderate</p>
-            </div>
-            <div class="weather-stats__item">
-              <i class="wi wi-fog weather-stats__icon"></i>
-              <h3 class="weather-stats__title">Visibility</h3>
-              <p class="weather-stats__value">10 km</p>
-            </div>
-            <div class="weather-stats__item">
-              <i class="wi wi-humidity weather-stats__icon"></i>
-              <h3 class="weather-stats__title">Humidity</h3>
-              <p class="weather-stats__value">65%</p>
-            </div>
-            <div class="weather-stats__item">
-              <i class="wi wi-strong-wind weather-stats__icon"></i>
-              <h3 class="weather-stats__title">Wind Speed</h3>
-              <p class="weather-stats__value">13 km/h</p>
-            </div>
-          </div>
-        </div>
+      <div id="weather-section" class="weather-section">
         <!-- daily forecast -->
 
-        <div class="weather-forecast-wrapper">
+        <!-- <div class="weather-forecast-wrapper">
           <div class="weather-forecast">
             <div class="weather-forecast__day">
               <div class="weather-forecast__date">Fri</div>
@@ -128,8 +106,15 @@
               <div class="weather-forecast__temp">23.9°</div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./index.js"></script>
   </body>
 </html>
