@@ -41,6 +41,7 @@ html {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 3vh;
 }
 
 .app-title {
@@ -49,53 +50,52 @@ html {
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
-
-.search-area {
+.search-box {
+  position: relative;
   display: flex;
-  align-items: center;
+  margin-top: 1em;
+  width: 300px;
+  height: 40px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5), 0 35px 60px rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
+  overflow: hidden;
+  transition: 0.5s;
 }
 
-#search-box {
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  margin-right: 10px;
-  transition: width 0.5s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.search-box:hover {
+  box-shadow: 0 0 15px 5px rgba(3, 54, 61, 0.235);
+  transition: 0.5s;
 }
 
-#search-box:focus {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-#search-button,
-#location-button {
+.search-input {
+  width: 100%;
   padding: 10px;
   border: none;
-  background-color: #fff;
-  color: #007bff;
-  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #0e8aa9;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  transition: 0.5s;
 }
 
-#search-button:hover,
-#location-button:hover {
-  background-color: #f8f8f8;
-  transform: translateY(-2px);
+.search-button i {
+  transform: scale(1);
+  transition: 0.5s;
 }
 
-#location-button img {
-  width: 20px;
-  height: auto;
+.search-box:hover .search-button i {
+  transform: scale(1.2);
+  transition: 0.5s;
 }
 
-.current-location-weather {
-  margin-top: 10px;
-  text-align: center;
-  animation: fadeInUp 1s ease-out;
-}
 /*side bar styling*/
 .sidebar {
   flex-basis: 25%;
@@ -106,6 +106,7 @@ html {
   transition: flex-basis 0.3s ease;
   color: white;
   width: 80vw;
+  height: 100%;
 }
 
 .sidebar:hover {
@@ -167,7 +168,7 @@ html {
 
 .live-temp {
   float: right;
-  color: #4caf50;
+  color: #68dbed;
   animation: pulse 1.4s infinite;
 }
 
@@ -201,6 +202,7 @@ html {
 
 .weather-section {
   max-width: 80vw;
+  height: 95vh;
 }
 .main {
   display: flex;
@@ -227,7 +229,7 @@ html {
 }
 
 .current-weather__city {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 30px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -241,7 +243,7 @@ html {
 }
 
 .current-weather__temp {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 25px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -278,14 +280,14 @@ html {
   color: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.587);
   min-width: 150px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .weather-stats__item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.927);
 }
 
 .weather-stats__icon {
@@ -311,7 +313,6 @@ html {
   gap: 20px;
   max-width: 100%;
   margin: 20px auto;
-  color: #fff;
 }
 
 .weather-forecast-title {
@@ -327,8 +328,6 @@ html {
 
   padding: 20px;
   gap: 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .weather-forecast__day {
@@ -336,36 +335,37 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
+  background: rgba(255, 255, 255, 0.092);
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.888);
   transition: all 0.3s ease;
   width: 180px;
 }
 
 .weather-forecast__day:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 15px rgb(0, 0, 0);
 }
 
 .weather-forecast__date {
   font-size: 1.8rem;
-  color: #555;
+  color: white;
   margin-bottom: 10px;
   font-weight: 500;
 }
 
 .weather-forecast__icon {
   font-size: 4em;
-  color: #2193b0;
+
+  color: #0e8aa9;
   margin: 15px;
   margin-bottom: 25px;
 }
 
 .weather-forecast__temp {
   font-size: 1.8rem;
-  color: #333;
+  color: white;
   font-weight: bold;
 }
 

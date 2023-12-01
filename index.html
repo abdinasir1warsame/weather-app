@@ -6,6 +6,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -14,22 +18,16 @@
     <header class="app-header">
       <div class="header-content">
         <h1 class="app-title">Weather Dashboard</h1>
-        <div class="search-area">
-          <input
-            type="text"
-            id="search-box"
-            placeholder="Search City..."
-            autofocus
-          />
-          <button id="search-button">Search</button>
-          <button id="location-button" title="Use Current Location">
-            <img src="location-icon.png" alt="Locate Me" />
+        <div class="search-box">
+          <input type="text" class="search-input" placeholder="Search..." />
+          <button class="search-button">
+            <i class="fas fa-search"></i>
           </button>
         </div>
       </div>
       <div class="current-location-weather">
-        <p>Current Location: <span id="currentLocation">New York</span></p>
-        <p>Temperature: <span id="currentTemp">75°F</span></p>
+        <p>Current Location: <span id="currentLocation">Islamabad</span></p>
+        <p>Temperature: <span id="currentTemp">36.9°F</span></p>
       </div>
     </header>
     <!-- main section -->
@@ -91,7 +89,7 @@
           </div>
         </div>
         <!-- daily forecast -->
-        <h2 class="weather-forecast-title">Daily Forecast</h2>
+
         <div class="weather-forecast-wrapper">
           <div class="weather-forecast">
             <div class="weather-forecast__day">
