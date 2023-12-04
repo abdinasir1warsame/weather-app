@@ -1,5 +1,87 @@
 const API_KEY = 'd92eced4f070a72612c2186a9ea527d8';
 const searchButton = $('#weather-search-submit');
+const sidebar = $('#sidebar');
+
+const fetchTemperatureForCity = async (city) => {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.main.temp;
+  } catch (error) {
+    console.log(`Error fetching temperature for ${city}:`, error);
+    throw error;
+  }
+};
+
+const populateFavoritesAndSearchHistory = async () => {
+  const favorites = [
+    'London',
+    'Birmingham, UK',
+    'Manchester',
+    'Liverpool',
+    'Leeds',
+    'Sheffield',
+    'Glasgow',
+  ];
+  const storedSearchHistory =
+    JSON.parse(localStorage.getItem('searchHistory')) || [];
+  const searchHistory = storedSearchHistory.slice(0, 8);
+
+  const $favoritesList = $('<ul id="favouresList"></ul>');
+  const $searchHistoryList = $('<ul id="searchHistoryList"></ul>');
+
+  const favoritePromises = favorites.map(async (city) => {
+    try {
+      const temperature = await fetchTemperatureForCity(city);
+      $favoritesList.append(
+        `<li>${city} <span class="live-temp">${temperature}°C</span></li>`
+      );
+    } catch (error) {
+      console.log(`Error fetching temperature for ${city}:`, error);
+    }
+  });
+
+  const historyPromises = searchHistory.map(async (city) => {
+    try {
+      const temperature = await fetchTemperatureForCity(city);
+      $searchHistoryList.append(
+        `<li>${city} <span class="live-temp">${temperature}°C</span></li>`
+      );
+    } catch (error) {
+      console.log(`Error fetching temperature for ${city}:`, error);
+    }
+  });
+
+  try {
+    await Promise.all([...favoritePromises, ...historyPromises]);
+  } catch (error) {
+    console.log('Error fetching temperatures:', error);
+  }
+
+  sidebar.on('click', '#favouresList li', function () {
+    const clickedCity = $(this).text().trim().split(' ')[0];
+    HandleSearch({ preventDefault: () => {} }, false, clickedCity);
+  });
+
+  sidebar.on('click', '#searchHistoryList li', function () {
+    const clickedCity = $(this).text().trim().split(' ')[0];
+    HandleSearch({ preventDefault: () => {} }, false, clickedCity);
+  });
+
+  sidebar
+    .append(
+      '<div class="favourites"><h2>United Kingdom Weather Conditions</h2></div>'
+    )
+    .find('.favourites')
+    .append($favoritesList);
+  sidebar
+    .append('<div class="search-history"><h2>Search History</h2></div>')
+    .find('.search-history')
+    .append($searchHistoryList);
+};
+
+populateFavoritesAndSearchHistory();
 
 const fetchCurrentWeather = async (search) => {
   const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}&units=metric`;
@@ -25,12 +107,14 @@ const fetchOneCallData = async (lat, lon) => {
 };
 
 const renderCurrentWeather = (data, oneCallData) => {
+  const iconID = oneCallData.current.weather[0].icon;
+  const iconUrl = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
   const currentWeatherHTML = `
     <h2 class="current-weather__city">${data.name}, ${data.sys.country}</h2>
-    <i class="wi wi-day-sunny current-weather__icon"></i>
-    <div class="current-weather__temp">${data.main.temp}°</div>
+    
+    <img src="${iconUrl}" alt="Weather Icon" class="current-weather__icon"/>
+    <div class="current-weather__temp">${data.main.temp}°C</div>
     <div class="current-weather__condition">${oneCallData.current.weather[0].main}</div>
-    <!-- detailed weather stats for current weather -->
     <h2 class="weather-stats-title">Detailed Statistics</h2>
     <div class="weather-stats">
       <div class="weather-stats__item">
@@ -74,7 +158,7 @@ const renderForecast = (oneCallData, isHourly) => {
           <div class="weather-forecast__day">
             <div class="weather-forecast__date">${hourString}</div>
             <img src="${iconUrl}" alt="Weather Icon" class="weather-forecast__icon"/>
-            <div class="weather-forecast__temp">${hour.temp.toFixed(1)}°</div>
+            <div class="weather-forecast__temp">${hour.temp.toFixed(1)}°C</div>
           </div>`;
       })
       .join('');
@@ -96,7 +180,7 @@ const renderForecast = (oneCallData, isHourly) => {
             <img src="${iconUrl}" alt="Weather Icon" class="weather-forecast__icon"/>
             <div class="weather-forecast__temp">${day.temp.day.toFixed(
               1
-            )}°</div>
+            )}°C</div>
           </div>`;
       })
       .join('');
@@ -113,9 +197,21 @@ const updateForecastButtons = (isHourly) => {
   $hourlyButton.toggleClass('chosen', isHourly);
 };
 
-const HandleSearch = async (event, isHourly = false) => {
-  const search = $('#search-input').val() || 'London';
+const renderLocationWeather = (location, temperature) => {
+  const html = `
+    <p>Current Location: <span id="currentLocation">${location}</span></p>
+    <p>Temperature: <span id="currentTemp">${temperature}°C</span></p>
+  `;
+  $('#current-location-weather').html(html);
+};
 
+// ...
+
+const HandleSearch = async (
+  event,
+  isHourly = false,
+  search = $('#search-input').val() || 'London'
+) => {
   try {
     const currentWeatherData = await fetchCurrentWeather(search);
 
@@ -165,6 +261,12 @@ const HandleSearch = async (event, isHourly = false) => {
         $('<div class="weather-forecast-wrapper"></div>').append(forecastHTML)
       );
 
+      // Render current location weather
+      renderLocationWeather(
+        currentWeatherData.name,
+        currentWeatherData.main.temp
+      );
+
       console.log(oneCallData);
     }
   } catch (error) {
@@ -174,6 +276,17 @@ const HandleSearch = async (event, isHourly = false) => {
   event.preventDefault();
 };
 
-HandleSearch({ preventDefault: () => {} });
-
 searchButton.on('click', (event) => HandleSearch(event, false));
+const setDefaultCity = async () => {
+  try {
+    // Call HandleSearch with the default parameters (London)
+    await HandleSearch({ preventDefault: () => {} }, false, 'London');
+  } catch (error) {
+    console.log('Error setting default city:', error);
+  }
+};
+
+// Call the setDefaultCity function on page load
+$(document).ready(() => {
+  setDefaultCity();
+});

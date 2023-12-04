@@ -33,7 +33,7 @@
           </button>
         </div>
       </div>
-      <div class="current-location-weather">
+      <div id="current-location-weather" class="current-location-weather">
         <p>Current Location: <span id="currentLocation">Islamabad</span></p>
         <p>Temperature: <span id="currentTemp">36.9°F</span></p>
       </div>
@@ -41,33 +41,12 @@
     <!-- main section -->
     <div class="main">
       <!-- side bar with top weathers and favourite weathers -->
-      <aside class="sidebar">
-        <div class="search-history">
-          <h2>United Kingdom Weather Conditions</h2>
-          <ul id="searchHistoryList">
-            <li>London <span class="live-temp">75°F</span></li>
-            <li>Birmingham<span class="live-temp">65°F</span></li>
-            <li>Manchester <span class="live-temp">70°F</span></li>
-            <li>Liverpool <span class="live-temp">82°F</span></li>
-            <li>Leeds <span class="live-temp">82°F</span></li>
-            <li>Sheffield <span class="live-temp">82°F</span></li>
-            <li>Liverpool <span class="live-temp">82°F</span></li>
-          </ul>
-        </div>
-        <div class="favorites">
-          <h2>Search History</h2>
-          <ul id="favoritesList">
-            <li>Los Angeles <span class="live-temp">80°F</span></li>
-            <li>Paris <span class="live-temp">68°F</span></li>
-            <li>Rio de Janeiro <span class="live-temp">85°F</span></li>
-            <li>Cape Town <span class="live-temp">72°F</span></li>
-          </ul>
-        </div>
-      </aside>
+      <aside id="sidebar" class="sidebar"></aside>
 
       <!-- current weather section for chosen city -->
       <div id="weather-section" class="weather-section"></div>
     </div>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="

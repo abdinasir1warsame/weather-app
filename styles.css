@@ -10,6 +10,7 @@ html {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to right, #063c50, #938d8e);
   color: white;
+  height: 100%;
 }
 
 /*header*/
@@ -102,7 +103,6 @@ html {
   background: rgba(0, 0, 0, 0.8);
   padding: 20px;
   overflow-y: auto;
-
   transition: flex-basis 0.3s ease;
   color: white;
   width: 80vw;
@@ -201,12 +201,13 @@ html {
 /*chosen weather for city styling*/
 
 .weather-section {
-  max-width: 80vw;
+  width: 80vw;
   height: 95vh;
 }
 .main {
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 .weather-stats-wrapper,
 .weather-forecast-wrapper {
@@ -219,7 +220,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 100vh;
 
   color: #fff;
   text-align: center;
@@ -230,16 +231,13 @@ html {
 
 .current-weather__city {
   font-size: 3rem;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .current-weather__icon {
-  font-size: 10em;
-  margin-bottom: 35px;
-  color: #ffec47;
-  filter: drop-shadow(0 0 10px #ffec47);
-  transform: translateZ(30px);
+  height: 20em;
+  background: cover;
 }
 
 .current-weather__temp {
@@ -304,6 +302,7 @@ html {
 .weather-stats__value {
   font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 /*forecast buttons*/
 .forecast-buttons {
@@ -321,8 +320,8 @@ html {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  color: #0e8aa9;
-  background: linear-gradient(45deg, #fff, #f0f0f0);
+  color: white;
+  background-color: rgba(255, 255, 255, 0.165);
   border: 2px solid transparent;
   border-image: #0e8aa9;
   border-image-slice: 1;
@@ -337,14 +336,14 @@ html {
 }
 
 .forecast-button:hover {
-  background: linear-gradient(45deg, #fff, #f0f0f0);
+  background: rgba(255, 255, 255, 0.165);
   color: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border-color: transparent;
 }
 
 .forecast-button:active {
-  background: linear-gradient(45deg, #fff, #f0f0f0);
+  background: rgba(255, 255, 255, 0.165);
   box-shadow: none;
   transform: scale(0.95);
 }
@@ -461,19 +460,79 @@ html {
 
 /* Responsive adjustments for max-width: 600px */
 @media (max-width: 600px) {
+  /*header styles*/
+  .app-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+  }
+
+  .app-title {
+    margin: 0;
+    font-size: 1.5em;
+
+    text-align: start;
+  }
+  .current-location-weather {
+    display: none;
+  }
+  .search-box {
+    margin-top: 1em;
+    width: 200px;
+    height: 40px;
+  }
+
+  .search-box:hover {
+    box-shadow: 0 0 15px 5px rgba(3, 54, 61, 0.235);
+    transition: 0.5s;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+  .sidebar {
+    display: none;
+  }
+
+  /*---------------*/
+  /*weather forecast button section*/
+  .forecast-buttons {
+    gap: 10px;
+  }
+  /*---------------------------*/
+  /*weather-section*/
+  .weather-section {
+    width: 100%;
+  }
   .current-weather {
-    height: 90vh;
+    height: 85vh;
     padding: 10px;
   }
 
-  .current-weather__city,
-  .current-weather__temp,
+  .current-weather__city {
+    font-size: 1.8rem;
+  }
+  .current-weather__temp {
+    font-size: 1.5rem;
+  }
   .current-weather__condition {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 
   .current-weather__icon {
-    font-size: 9em;
+    height: 10em;
   }
 
   .weather-stats-title {
