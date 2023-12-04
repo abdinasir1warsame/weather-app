@@ -305,6 +305,98 @@ html {
   font-size: 1.5rem;
   font-weight: bold;
 }
+/*forecast buttons*/
+.forecast-buttons {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.forecast-button {
+  display: inline-block;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #0e8aa9;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  border: 2px solid transparent;
+  border-image: #0e8aa9;
+  border-image-slice: 1;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgb(0, 0, 0);
+  margin: 1em;
+}
+
+.forecast-button:hover {
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+}
+
+.forecast-button:active {
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  box-shadow: none;
+  transform: scale(0.95);
+}
+
+.forecast-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.forecast-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0e8aa9, #063c50);
+  transform-origin: 100% 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.forecast-button:hover::before {
+  transform-origin: 0 100%;
+  transform: scaleX(1);
+}
+
+.forecast-button:hover::before {
+  transform-origin: 0 100%;
+  transform: scaleX(1);
+}
+.forecast-button.chosen {
+  display: inline-block;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(255, 254, 254);
+  background: linear-gradient(45deg, #0e8aa9, #063c50);
+  border: 2px solid transparent;
+  border-image: #0e8aa9;
+  border-image-slice: 1;
+  border-radius: 5px;
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgb(0, 0, 0);
+  margin: 1em;
+}
 /*weather-forecast styling*/
 .weather-forecast-wrapper {
   display: flex;
@@ -356,11 +448,9 @@ html {
 }
 
 .weather-forecast__icon {
-  font-size: 4em;
-
+  height: 100px;
+  fill: #0e8aa9;
   color: #0e8aa9;
-  margin: 15px;
-  margin-bottom: 25px;
 }
 
 .weather-forecast__temp {
