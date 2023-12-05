@@ -71,3 +71,7 @@ Welcome to the Weather App! This application is a user-friendly tool that provid
    - Explore the current weather conditions of your location in the dedicated section. 🌍🌞
 
 Enjoy using the Weather App and stay informed about the weather conditions! ☀️🌧️❄️
+
+# deployed url Links
+
+-deployed url:[ https://abdinasir1warsame.github.io/weather-app/](https://abdinasir1warsame.github.io/weather-app/)
