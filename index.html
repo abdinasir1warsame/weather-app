@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- header section -->
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">Weather Dashboard</h1>
+        <div class="search-box">
+          <input
+            id="search-input"
+            class="search-input"
+            placeholder="Search..."
+          />
+          <button
+            id="weather-search-submit"
+            type="submit"
+            class="search-button"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <div id="current-location-weather" class="current-location-weather"></div>
+    </header>
+    <!-- main section -->
+    <div class="main">
+      <!-- side bar with top weathers and favourite weathers -->
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <!-- current weather section for chosen city -->
+      <div id="weather-section" class="weather-section"></div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
